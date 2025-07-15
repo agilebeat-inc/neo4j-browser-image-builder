@@ -26,6 +26,11 @@ RUN ARCH="$(dpkg --print-architecture)" && \
       ppc64el) NODE_ARCH="ppc64le";; \
       *) echo "Unsupported architecture: ${ARCH}"; exit 1;; \
     esac && \
+    sleep 5 && \
+    echo "Detected architecture: ${ARCH}" && \
+    echo "Using Node.js architecture: ${NODE_ARCH}" && \
+    echo "Downloading Node.js version ${NODE_VERSION} for architecture ${NODE_ARCH}" && \
+    echo "Installing Node.js ${NODE_VERSION} for architecture ${NODE_ARCH}" && \
     curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${NODE_ARCH}.tar.xz" -o node.tar.xz && \
     tar -xf node.tar.xz -C /usr/local --strip-components=1 && \
     rm node.tar.xz && \
