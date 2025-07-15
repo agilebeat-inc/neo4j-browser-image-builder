@@ -42,3 +42,4 @@ Push to a branch starting with `m` or `v` to trigger the publish workflow.
 
 ## License
 MIT
+
