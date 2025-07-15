@@ -22,6 +22,7 @@ RUN ARCH="$(dpkg --print-architecture)" && \
     case "${ARCH}" in \
       amd64) NODE_ARCH="x64";; \
       arm64) NODE_ARCH="arm64";; \
+      armhf|armv7l) NODE_ARCH="armv7l";; \
       ppc64el) NODE_ARCH="ppc64le";; \
       *) echo "Unsupported architecture: ${ARCH}"; exit 1;; \
     esac && \
