@@ -4,7 +4,7 @@ This repository builds and publishes a multi-architecture Docker image for the N
 
 ## Features
 - Automated build and publish workflow via GitHub Actions
-- Multi-arch support: `linux/amd64`, `linux/s390x`, `linux/arm64`, `linux/ppc64le`
+- Multi-arch support: `linux/amd64`
 - Semantic versioning for Docker image tags
 - Image signing with Cosign on version branches
 

@@ -59,6 +59,11 @@ RUN npm install -g koa
 # Copy only the dist folder from the builder stage
 COPY --from=builder /app/dist ./dist
 
+# Copy the Docker-Readme.md file to the root of the container  
+# This file will be used to provide information about the Docker image
+# and how to use it.
+COPY Docker-Readme.md /README.md
+
 # Copy Koa server code
 COPY server.js .
 
