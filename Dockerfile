@@ -1,5 +1,5 @@
 # -------- Stage 1: Build --------
-FROM debian:stable-slim AS builder
+FROM debian:stable AS builder
 
 # Install git
 RUN apt-get update && apt-get install -y git curl sudo
