@@ -55,6 +55,6 @@ jobs:
         labels: ${{ steps.docker_meta.outputs.labels }}
     - name: Sign image only on version branches
       if: ${{ startsWith(github.ref, 'refs/heads/v') }}
-      run: cosign sign --oidc-issuer https://token.actions.githubusercontent.com agilebeat/neo4j-browser@${{ steps.build_and_publish.outputs.digest }}
+      run: cosign sign --yes --oidc-issuer https://token.actions.githubusercontent.com agilebeat/neo4j-browser@${{ steps.build_and_publish.outputs.digest }}
       env:
         COSIGN_EXPERIMENTAL: 1
