@@ -43,6 +43,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and publish multi-arch kubectl container
+      id: build_and_publish
       if: ${{ startsWith(github.ref, 'refs/heads/m') || startsWith(github.ref, 'refs/heads/v') }}
       uses: docker/build-push-action@v2
       with:
@@ -54,6 +55,6 @@ jobs:
         labels: ${{ steps.docker_meta.outputs.labels }}
     - name: Sign image only on version branches
       if: ${{ startsWith(github.ref, 'refs/heads/v') }}
-      run: cosign sign --oidc-issuer https://token.actions.githubusercontent.com ${{ steps.build_and_publish_multi_arch_kubectl_container.outputs.digest }}
+      run: cosign sign --oidc-issuer https://token.actions.githubusercontent.com ${{ steps.build_and_publish.outputs.digest }}
       env:
         COSIGN_EXPERIMENTAL: 1
